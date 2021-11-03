@@ -35,7 +35,12 @@ def login():
         if usuario and bcrypt.check_password_hash(usuario.senha, form_login.senha.data):
             login_user(usuario, remember=form_login.lembrar_dados.data)
             flash(f'Login Feito com Sucesso no E-mail: {form_login.email.data}', 'alert-success')
-            return redirect(url_for('teste'))
+            par_next = request.args.get('next')
+            if par_next:
+                return redirect(par_next)
+            else:
+
+                return redirect(url_for('teste'))
         else:
             flash(f'Falha no login. E-mail ou senha incorreto ', 'alert-danger')
 
@@ -46,7 +51,7 @@ def login():
         database.session.add(usuario)
         database.session.commit()
 
-        return redirect(url_for('teste'))
+        return redirect(url_for(url_for('teste')))
 
     return render_template('login.html', form_login=form_login, form_criarconta=form_criarconta)
 
