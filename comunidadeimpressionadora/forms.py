@@ -17,12 +17,17 @@ class FormCriarConta(FlaskForm):
             raise ValidationError('E-mail já cadastrado. Cadastre-se como outro email ou faça login para continuar')
 
 
-
 class FormLogin(FlaskForm):
     email = StringField('E-mail', validators=[DataRequired(), email()])
     senha = PasswordField('Senha', validators=[DataRequired(), length(6, 20)])
     lembrar_dados = BooleanField('Lembrar Dados de Acesso')
     botao_submit_Login = SubmitField('Fazer Login')
+
+
+class FormEditarPerfil(FlaskForm):
+    username = StringField('Nome do usuário', validators=[DataRequired()])
+    email = StringField('E-mail', validators=[DataRequired(), email()])
+    botao_submit_editar_perfil = SubmitField('Editar Perfil')
 
 
 
