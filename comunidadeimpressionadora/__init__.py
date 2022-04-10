@@ -17,5 +17,7 @@ login_manager.login_message = 'Crie um Login Para Acessar a Pagina '
 
 
 from comunidadeimpressionadora import routs
+# comunidade
+
 
 
